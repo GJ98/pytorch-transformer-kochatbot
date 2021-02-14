@@ -1,34 +1,23 @@
 from __future__ import absolute_import, division, print_function, unicode_literals
-import argparse
-import sys
-import numpy as np
 from pathlib import Path
 from tqdm import tqdm
 import os
 import json
-from eunjeon import Mecab
-import time
+import numpy as np
 
 import torch
-# from torch.utils.tensorboard import SummaryWriter
 from torch import nn, optim
 from torch.optim.lr_scheduler import ReduceLROnPlateau
 from torch.utils.data import DataLoader
 
-from evaluate import evaluate
-from preprocessor import load_vocabulary
-from metric import acc
+from evaluate import evaluate, acc
+from data_utils.preprocessor import load_vocabulary
 from model.net import Transformer
 from model.optim import GradualWarmupScheduler
 
 import config
 from data_utils.utils import CheckpointManager, SummaryManager
-from chatbot_dataset import ChatbotDataset
-
-np.set_printoptions(suppress=False)
-np.set_printoptions(threshold=sys.maxsize)
-
-
+from data_utils.chatbot_dataset import ChatbotDataset
 
 def main():
 

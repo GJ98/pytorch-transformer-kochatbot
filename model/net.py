@@ -6,13 +6,12 @@ from pprint import pprint
 import torch
 from torch import nn
 
-from data_utils.utils import Config
 from model.embedding.embeddings import Embeddings
 
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 
 class Transformer(nn.Module):
-    def __init__(self, config: Config, vocab: dict) -> None:
+    def __init__(self, config: dict, vocab: dict) -> None:
         """Instantiating Transformer class
         Args:
             config (Config): model config, the instance of data_utils.utils.Config
