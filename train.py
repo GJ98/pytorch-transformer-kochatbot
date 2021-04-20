@@ -94,9 +94,10 @@ def main():
                 mb_acc = acc(y_pred, dec_output)
 
             tr_loss += mb_loss.item()
-            tr_acc = mb_acc.item()
+            tr_acc += mb_acc.item()
             tr_loss_avg =  tr_loss / (step + 1)
-            tr_summary = {'loss': tr_loss_avg, 'acc': tr_acc}
+            tr_acc_avg = tr_acc / (step + 1)
+            tr_summary = {'loss': tr_loss_avg, 'acc': tr_acc_avg}
             total_step = epoch * len(tr_dl) + step
 
             # Eval
